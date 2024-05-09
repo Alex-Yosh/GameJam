@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  GameJam
 //
 //  Created by Alex Yoshida on 2024-05-02.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct HomeView: View {
     var arr: [[Int]] = [[1, 2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]]
     
     var body: some View {
@@ -27,5 +27,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    HomeView()
 }

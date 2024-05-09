@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FAC08D432BED30FF002D7EE4 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D422BED30FF002D7EE4 /* DatabaseManager.swift */; };
+		FAC08D4A2BED329B002D7EE4 /* UserContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D482BED329B002D7EE4 /* UserContainer.xcdatamodeld */; };
 		FAF00FF82BE43C33009674E8 /* GameJamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF00FF72BE43C33009674E8 /* GameJamApp.swift */; };
-		FAF00FFA2BE43C33009674E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF00FF92BE43C33009674E8 /* ContentView.swift */; };
+		FAF00FFA2BE43C33009674E8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF00FF92BE43C33009674E8 /* HomeView.swift */; };
 		FAF00FFC2BE43C35009674E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF00FFB2BE43C35009674E8 /* Assets.xcassets */; };
 		FAF00FFF2BE43C35009674E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF00FFE2BE43C35009674E8 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FAC08D422BED30FF002D7EE4 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		FAC08D492BED329B002D7EE4 /* UserContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserContainer.xcdatamodel; sourceTree = "<group>"; };
 		FAF00FF42BE43C33009674E8 /* GameJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF00FF72BE43C33009674E8 /* GameJamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameJamApp.swift; sourceTree = "<group>"; };
-		FAF00FF92BE43C33009674E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FAF00FF92BE43C33009674E8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FAF00FFB2BE43C35009674E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAF00FFE2BE43C35009674E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,7 +39,7 @@
 		FAC08D3D2BEC5514002D7EE4 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				FAF00FF92BE43C33009674E8 /* ContentView.swift */,
+				FAF00FF92BE43C33009674E8 /* HomeView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -58,6 +62,7 @@
 		FAC08D402BEC5555002D7EE4 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				FAC08D422BED30FF002D7EE4 /* DatabaseManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -69,6 +74,14 @@
 				FAC08D3D2BEC5514002D7EE4 /* Pages */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FAC08D442BED3139002D7EE4 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				FAC08D482BED329B002D7EE4 /* UserContainer.xcdatamodeld */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		FAF00FEB2BE43C33009674E8 = {
@@ -94,6 +107,7 @@
 				FAC08D3E2BEC5524002D7EE4 /* Utils */,
 				FAC08D402BEC5555002D7EE4 /* Managers */,
 				FAC08D3F2BEC553B002D7EE4 /* Models */,
+				FAC08D442BED3139002D7EE4 /* Database */,
 				FAF00FFD2BE43C35009674E8 /* Preview Content */,
 			);
 			path = GameJam;
@@ -177,8 +191,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAF00FFA2BE43C33009674E8 /* ContentView.swift in Sources */,
+				FAC08D4A2BED329B002D7EE4 /* UserContainer.xcdatamodeld in Sources */,
+				FAF00FFA2BE43C33009674E8 /* HomeView.swift in Sources */,
 				FAF00FF82BE43C33009674E8 /* GameJamApp.swift in Sources */,
+				FAC08D432BED30FF002D7EE4 /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +402,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FAC08D482BED329B002D7EE4 /* UserContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAC08D492BED329B002D7EE4 /* UserContainer.xcdatamodel */,
+			);
+			currentVersion = FAC08D492BED329B002D7EE4 /* UserContainer.xcdatamodel */;
+			name = UserContainer.xcdatamodeld;
+			path = /Users/alex/Desktop/GameJamDailyPuzzle/GameJam/GameJam/Database/UserContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FAF00FEC2BE43C33009674E8 /* Project object */;
 }

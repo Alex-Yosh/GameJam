@@ -12,7 +12,8 @@ struct GameJamApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environmentObject(DatabaseManager.shared)
         }
     }
 }
