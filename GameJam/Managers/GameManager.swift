@@ -14,6 +14,8 @@ final class GameManager: ObservableObject{
     @Published var requiredTaps: Int = 0
     @Published var overlay: Constants.ScreenType?
     @Published var startedLevel: Bool = false
+    var bombPlacementsRow: [Int] = []
+    var bombPlacementsCol: [Int] = []
     
         //-MARK: Notes for Shannon
         //these are the two objects you will need
@@ -34,17 +36,15 @@ final class GameManager: ObservableObject{
             if (requiredTaps > 0)
             {
                 requiredTaps-=1
-                if (requiredTaps == 0)
-                {
-                    // TODO: reveal finish button
-                }
             }
             
         }
         else{
             //bomb
-            //TODO: display popup you lose and transition to RestartGame()
-            RestartGame()
+            overlay = .basic
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.overlay = .restart
+            }
         }
         DatabaseManager.shared.saveMap()
     }
@@ -60,29 +60,34 @@ final class GameManager: ObservableObject{
         DatabaseManager.shared.saveUser()
     }
    
-    func StartLevel() {
-        requiredTaps = 3
-        startedLevel = true
-        DatabaseManager.shared.user.day += 1
-        
-        // flips over all cards and increase the value
-        for i in 0...Constants.numOfTilesInColumn-1{
-            for j in 0...Constants.numOfTilesInRow-1{
-                DatabaseManager.shared.map[i][j].value *= 2
-                DatabaseManager.shared.map[i][j].isPressed = false
+    func StartLevel(skipAddDay: Bool) {
+        if (DatabaseManager.shared.user.day==0){
+            AddBombs()
+            ShowBombs(startGame: true)
+        }else{
+            if (!skipAddDay){
+                DatabaseManager.shared.user.day += 1
+                
             }
+            requiredTaps = 3
+            startedLevel = true
+            // flips over all cards and increase the value
+            for i in 0...Constants.numOfTilesInColumn-1{
+                for j in 0...Constants.numOfTilesInRow-1{
+                    DatabaseManager.shared.map[i][j].value *= 2
+                    DatabaseManager.shared.map[i][j].isPressed = false
+                }
+            }
+            DatabaseManager.shared.saveMap()
+            DatabaseManager.shared.saveUser()
         }
-        DatabaseManager.shared.saveMap()
     }
     
-    // show map of the next day
-    func WinLevel() {
+    func doneFishing() {
         if (DatabaseManager.shared.user.day < 7) {
            
-           
             AddBombs()
-            // TODO: reveal next days bombs for a period of time
-            StartLevel()
+            overlay = .seeNext
         }
         else {
             // TODO: display you win popup
@@ -90,11 +95,44 @@ final class GameManager: ObservableObject{
         }
         DatabaseManager.shared.saveUser()
     }
+    
+    // show map of the next day
+    func ShowBombs(startGame: Bool) {
+        overlay = .basic
+    
+        for i in 0...Constants.numOfTilesInColumn-1{
+            for j in 0...Constants.numOfTilesInRow-1{
+                DatabaseManager.shared.map[i][j].isPressed = false
+            }
+        }
+        
+        for i in 0...3{
+            DatabaseManager.shared.map[bombPlacementsRow[i]][bombPlacementsCol[i]].isPressed = true
+        }
+        DatabaseManager.shared.saveMap()
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.overlay = nil
+            if (!startGame){
+                for i in 0...3{
+                    DatabaseManager.shared.map[self.bombPlacementsRow[i]][self.bombPlacementsCol[i]].isPressed = false
+                }
+                TimerManager.shared.startTimer()
+            }else{
+                DatabaseManager.shared.user.day += 1
+                DatabaseManager.shared.saveUser()
+                self.StartLevel(skipAddDay: true)
+            }
+        }
+    }
 
     // adds 4 new bombs
-    func AddBombs() {
+    func AddBombs(){
         var numBombs = 0
-        let totalBombs = 4
+        var totalBombs = 4
+        bombPlacementsRow = []
+        bombPlacementsCol = []
         while (numBombs < totalBombs) {
             let randomRow = Int.random(in: 0..<6)
             let randomCol = Int.random(in: 0..<6)
@@ -102,6 +140,8 @@ final class GameManager: ObservableObject{
                 DatabaseManager.shared.map[randomRow][randomCol].value = 0
                 DatabaseManager.shared.map[randomRow][randomCol].imageFront = "bomb"
                 numBombs += 1
+                bombPlacementsRow.append(randomRow)
+                bombPlacementsCol.append(randomCol)
             }
         }
         DatabaseManager.shared.saveMap()
@@ -110,14 +150,15 @@ final class GameManager: ObservableObject{
     // call this when failing a level and reset back to day 1
     func RestartGame(){
         //reinitalize map
-        DatabaseManager.shared.reInitalizeMap();
-        AddBombs()
-        // set up user
+        DatabaseManager.shared.reInitalizeMap()
         DatabaseManager.shared.user.currScore = 0
-        DatabaseManager.shared.user.day = 1
+        DatabaseManager.shared.user.day = 0
+        DatabaseManager.shared.saveUser()
         
-        //TODO: add transition/popup before calling startlevel
-        StartLevel()
+        
+        //get rid of overlay if there is one
+        overlay = nil
+        StartLevel(skipAddDay: false)
         
     }
 }

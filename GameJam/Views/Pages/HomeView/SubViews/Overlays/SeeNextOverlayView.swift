@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SeeNextOverlayView: View {
     @EnvironmentObject var dbManager : DatabaseManager
+    @EnvironmentObject var gameManager : GameManager
+    
+    
     var body: some View {
         ZStack{
             Color.black
@@ -25,7 +28,7 @@ struct SeeNextOverlayView: View {
                         .foregroundColor(Constants.Colours.plainText)
                     Text("Show tomorrow's bombs?")
                         .foregroundColor(Constants.Colours.plainText)
-                    GameButton(completion: {}, text: "Show Bombs")
+                    GameButton(completion: {gameManager.ShowBombs(startGame: false)}, text: "Show Bombs")
                 }
             }.frame(maxWidth: 250, maxHeight: 150)
         }

@@ -14,7 +14,7 @@ struct GameButton: View {
     var body: some View {
         VStack{
             Button(action:{
-                completion()
+                    completion()
             }){
                 ZStack{
                     Rectangle()

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RestartOverlayView: View {
+    @EnvironmentObject var gameManager: GameManager
     var body: some View {
         ZStack{
             Color.black
@@ -23,7 +24,7 @@ struct RestartOverlayView: View {
                         .foregroundStyle(.red)
                         .padding(.top)
                         .foregroundColor(Constants.Colours.plainText)
-                    GameButton(completion: {}, text: "Restart Game")
+                    GameButton(completion: {gameManager.RestartGame()}, text: "Restart Game")
                 }
             }.frame(maxWidth: 200, maxHeight: 120)
         }

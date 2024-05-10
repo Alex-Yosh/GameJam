@@ -94,7 +94,7 @@ final class DatabaseManager: ObservableObject{
     private func initalizeUser() {
         let newUser = UserEntity(context: userContainer.viewContext)
         newUser.currScore = 0
-        newUser.day = 1
+        newUser.day = 0
         newUser.endDate = Date.now
         newUser.highScore = 0
         saveUserData()
