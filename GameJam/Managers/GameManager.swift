@@ -41,7 +41,10 @@ final class GameManager: ObservableObject{
         }
         else{
             //bomb
-            overlay = .restart
+            overlay = .basic
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.overlay = .restart
+            }
         }
         DatabaseManager.shared.saveMap()
     }

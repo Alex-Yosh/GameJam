@@ -23,12 +23,12 @@ final class TimerManager: ObservableObject{
     }
     
     func startTimer(){
-//        endDate = endDate.startOfNextDay
         
-        //for testing
         if (DatabaseManager.shared.user.endDate > Date.now){
             endDate = DatabaseManager.shared.user.endDate
         }else{
+            //for testing
+            //        endDate = endDate.startOfNextDay
             endDate = Date.now.addingTimeInterval(10)
         }
         
