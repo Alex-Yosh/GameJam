@@ -75,11 +75,14 @@ final class GameManager: ObservableObject{
 //    }
 //    
 //
-//    // call this when failing a level and reset back to day 1
-//    func RestartGame(){
-//        DatabaseManager.shared.map = [][];
-//        // initialize 6 by 6 grid with 4 bombs at random locations
-//        DatabaseManager.shared.map.append(<#T##newElement: [Tile]##[Tile]#>)
-//        
-//    }
+    // call this when failing a level and reset back to day 1
+    func RestartGame(){
+        //reinitalize map
+        DatabaseManager.shared.reInitalizeMap();
+        
+        // set up user
+        DatabaseManager.shared.user.currScore = 0
+        DatabaseManager.shared.user.day = 1
+        
+    }
 }

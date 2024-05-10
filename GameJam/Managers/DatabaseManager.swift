@@ -43,8 +43,12 @@ final class DatabaseManager: ObservableObject{
             }
             
         }
-        
         saveMapData()
+    }
+    
+    func reInitalizeMap() {
+        deleteMapData()
+        initalizeMap()
     }
     
     func saveUser() {
