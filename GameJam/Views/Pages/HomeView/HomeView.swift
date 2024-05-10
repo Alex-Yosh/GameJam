@@ -11,6 +11,7 @@ import CoreData
 struct HomeView: View {
     @EnvironmentObject var gameManager : GameManager
     @EnvironmentObject var dbManager : DatabaseManager
+    @EnvironmentObject var timerManager : TimerManager
 
     
     var body: some View {
@@ -26,7 +27,14 @@ struct HomeView: View {
                     SeeNextOverlayView()
                 }
             }
-        }
+        }.onAppear(perform: {
+            if (dbManager.user.endDate > Date.now){
+                timerManager.startTimer()
+            }
+            else{
+                gameManager.overlay = nil
+            }
+        })
     }
 }
 

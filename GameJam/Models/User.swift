@@ -11,6 +11,6 @@ import Foundation
 struct User{
     var currScore: Int32
     var day: Int32
-    var startDate: Date
+    var endDate: Date
     var highScore: Int32
 }
