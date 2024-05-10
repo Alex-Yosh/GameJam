@@ -12,7 +12,9 @@ struct DayTextView: View {
     var body: some View {
         VStack{
             Text("Day " + String(dbManager.user.day)).bold().padding()
+                .foregroundColor(Constants.Colours.plainText)
             Text("Find fish, avoid bombs")
+                .foregroundColor(Constants.Colours.plainText)
         }
     }
 }

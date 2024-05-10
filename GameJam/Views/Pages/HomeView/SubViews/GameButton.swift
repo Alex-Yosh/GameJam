@@ -18,11 +18,11 @@ struct GameButton: View {
             }){
                 ZStack{
                     Rectangle()
-                        .foregroundColor(.yellow)
+                        .foregroundColor(Constants.Colours.accent)
                         .cornerRadius(15)
                         .padding()
                     Text(text)
-                        .foregroundColor(.white)
+                        .foregroundColor(Constants.Colours.buttonText)
                 }
             }
         }

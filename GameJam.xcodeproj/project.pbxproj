@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FAC08D432BED30FF002D7EE4 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D422BED30FF002D7EE4 /* DatabaseManager.swift */; };
-		FAC08D4A2BED329B002D7EE4 /* UserContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D482BED329B002D7EE4 /* UserContainer.xcdatamodeld */; };
 		FAC08D4F2BED43B2002D7EE4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D4E2BED43B2002D7EE4 /* Constants.swift */; };
-		FAC08D5B2BED4EE9002D7EE4 /* MapContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D592BED4EE9002D7EE4 /* MapContainer.xcdatamodeld */; };
 		FAC08D602BED5672002D7EE4 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D5F2BED5672002D7EE4 /* GridView.swift */; };
 		FAC08D642BEDB4B8002D7EE4 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D632BEDB4B8002D7EE4 /* GameManager.swift */; };
 		FAC08D662BEDCE84002D7EE4 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D652BEDCE84002D7EE4 /* Tile.swift */; };
@@ -30,13 +28,13 @@
 		FAF00FFA2BE43C33009674E8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF00FF92BE43C33009674E8 /* HomeView.swift */; };
 		FAF00FFC2BE43C35009674E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF00FFB2BE43C35009674E8 /* Assets.xcassets */; };
 		FAF00FFF2BE43C35009674E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF00FFE2BE43C35009674E8 /* Preview Assets.xcassets */; };
+		FB0B0D592BEE9D6D00BC8EA3 /* MapContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB0B0D552BEE9D6D00BC8EA3 /* MapContainer.xcdatamodeld */; };
+		FB0B0D5A2BEE9D6D00BC8EA3 /* UserContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB0B0D572BEE9D6D00BC8EA3 /* UserContainer.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FAC08D422BED30FF002D7EE4 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		FAC08D492BED329B002D7EE4 /* UserContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserContainer.xcdatamodel; sourceTree = "<group>"; };
 		FAC08D4E2BED43B2002D7EE4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		FAC08D5A2BED4EE9002D7EE4 /* MapContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MapContainer.xcdatamodel; sourceTree = "<group>"; };
 		FAC08D5F2BED5672002D7EE4 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		FAC08D632BEDB4B8002D7EE4 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		FAC08D652BEDCE84002D7EE4 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
@@ -58,6 +56,8 @@
 		FAF00FF92BE43C33009674E8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FAF00FFB2BE43C35009674E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAF00FFE2BE43C35009674E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FB0B0D562BEE9D6D00BC8EA3 /* MapContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MapContainer.xcdatamodel; sourceTree = "<group>"; };
+		FB0B0D582BEE9D6D00BC8EA3 /* UserContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserContainer.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +120,8 @@
 		FAC08D442BED3139002D7EE4 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				FAC08D482BED329B002D7EE4 /* UserContainer.xcdatamodeld */,
-				FAC08D592BED4EE9002D7EE4 /* MapContainer.xcdatamodeld */,
+				FB0B0D552BEE9D6D00BC8EA3 /* MapContainer.xcdatamodeld */,
+				FB0B0D572BEE9D6D00BC8EA3 /* UserContainer.xcdatamodeld */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -279,12 +279,13 @@
 				FAC08D702BEE53AC002D7EE4 /* ScoresTextView.swift in Sources */,
 				FAC08D6A2BEE4EC4002D7EE4 /* TileView.swift in Sources */,
 				FAC08D7B2BEE589A002D7EE4 /* ColourConstants.swift in Sources */,
-				FAC08D4A2BED329B002D7EE4 /* UserContainer.xcdatamodeld in Sources */,
 				FAC08D6C2BEE52EC002D7EE4 /* DayTextView.swift in Sources */,
 				FAC08D722BEE560F002D7EE4 /* GameView.swift in Sources */,
+				FB0B0D592BEE9D6D00BC8EA3 /* MapContainer.xcdatamodeld in Sources */,
 				FAC08D642BEDB4B8002D7EE4 /* GameManager.swift in Sources */,
 				FAC08D6E2BEE534D002D7EE4 /* ClicksLeftTextView.swift in Sources */,
 				FAC08D752BEE5712002D7EE4 /* CoolDownOverlayView.swift in Sources */,
+				FB0B0D5A2BEE9D6D00BC8EA3 /* UserContainer.xcdatamodeld in Sources */,
 				FAC08D792BEE573C002D7EE4 /* SeeNextOverlayView.swift in Sources */,
 				FAF00FFA2BE43C33009674E8 /* HomeView.swift in Sources */,
 				FAF00FF82BE43C33009674E8 /* GameJamApp.swift in Sources */,
@@ -293,7 +294,6 @@
 				FAC08D432BED30FF002D7EE4 /* DatabaseManager.swift in Sources */,
 				FAC08D662BEDCE84002D7EE4 /* Tile.swift in Sources */,
 				FAC08D7E2BEE5BD4002D7EE4 /* GameButton.swift in Sources */,
-				FAC08D5B2BED4EE9002D7EE4 /* MapContainer.xcdatamodeld in Sources */,
 				FAC08D682BEDD9EE002D7EE4 /* User.swift in Sources */,
 				FAC08D772BEE5730002D7EE4 /* RestartOverlayView.swift in Sources */,
 				FAC08D4F2BED43B2002D7EE4 /* Constants.swift in Sources */,
@@ -508,25 +508,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FAC08D482BED329B002D7EE4 /* UserContainer.xcdatamodeld */ = {
+		FB0B0D552BEE9D6D00BC8EA3 /* MapContainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FAC08D492BED329B002D7EE4 /* UserContainer.xcdatamodel */,
+				FB0B0D562BEE9D6D00BC8EA3 /* MapContainer.xcdatamodel */,
 			);
-			currentVersion = FAC08D492BED329B002D7EE4 /* UserContainer.xcdatamodel */;
-			name = UserContainer.xcdatamodeld;
-			path = /Users/alex/Desktop/GameJamDailyPuzzle/GameJam/GameJam/Database/UserContainer.xcdatamodeld;
+			currentVersion = FB0B0D562BEE9D6D00BC8EA3 /* MapContainer.xcdatamodel */;
+			name = MapContainer.xcdatamodeld;
+			path = /Users/shannon/Documents/GameJam/GameJam/Database/MapContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
-		FAC08D592BED4EE9002D7EE4 /* MapContainer.xcdatamodeld */ = {
+		FB0B0D572BEE9D6D00BC8EA3 /* UserContainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FAC08D5A2BED4EE9002D7EE4 /* MapContainer.xcdatamodel */,
+				FB0B0D582BEE9D6D00BC8EA3 /* UserContainer.xcdatamodel */,
 			);
-			currentVersion = FAC08D5A2BED4EE9002D7EE4 /* MapContainer.xcdatamodel */;
-			name = MapContainer.xcdatamodeld;
-			path = /Users/alex/Desktop/GameJamDailyPuzzle/GameJam/GameJam/Database/MapContainer.xcdatamodeld;
+			currentVersion = FB0B0D582BEE9D6D00BC8EA3 /* UserContainer.xcdatamodel */;
+			name = UserContainer.xcdatamodeld;
+			path = /Users/shannon/Documents/GameJam/GameJam/Database/UserContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

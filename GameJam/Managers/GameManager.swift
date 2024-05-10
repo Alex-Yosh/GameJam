@@ -63,6 +63,8 @@ final class GameManager: ObservableObject{
     func StartLevel() {
         requiredTaps = 3
         startedLevel = true
+        DatabaseManager.shared.user.day += 1
+        
         // flips over all cards and increase the value
         for i in 0...Constants.numOfTilesInColumn-1{
             for j in 0...Constants.numOfTilesInRow-1{
@@ -77,7 +79,7 @@ final class GameManager: ObservableObject{
     func WinLevel() {
         if (DatabaseManager.shared.user.day < 7) {
            
-            DatabaseManager.shared.user.day += 1
+           
             AddBombs()
             // TODO: reveal next days bombs for a period of time
             StartLevel()
@@ -86,12 +88,13 @@ final class GameManager: ObservableObject{
             // TODO: display you win popup
             RestartGame();
         }
+        DatabaseManager.shared.saveUser()
     }
 
     // adds 4 new bombs
     func AddBombs() {
         var numBombs = 0
-        var totalBombs = 4
+        let totalBombs = 4
         while (numBombs < totalBombs) {
             let randomRow = Int.random(in: 0..<6)
             let randomCol = Int.random(in: 0..<6)

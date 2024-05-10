@@ -18,8 +18,11 @@ struct ClicksLeftTextView: View {
         }else{
             HStack{
                 Text("Fish at least")
+                    .foregroundColor(Constants.Colours.plainText)
                 Text("\(gameManager.requiredTaps)").bold()
+                    .foregroundColor(Constants.Colours.plainText)
                 Text("more tiles today")
+                    .foregroundColor(Constants.Colours.plainText)
             }.frame(height: 80)
         }
     }

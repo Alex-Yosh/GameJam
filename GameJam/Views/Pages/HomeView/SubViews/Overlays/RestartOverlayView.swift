@@ -16,13 +16,14 @@ struct RestartOverlayView: View {
                 .opacity(0.7)
             ZStack{
                 Rectangle()
-                    .foregroundColor(.white)
+                    .foregroundColor(Constants.Colours.background)
                     .cornerRadius(10)
                 VStack{
                     Text("Oh no, you died :(")
                         .foregroundStyle(.red)
                         .padding(.top)
-                    GameButton(completion: {}, text: "Restart")
+                        .foregroundColor(Constants.Colours.plainText)
+                    GameButton(completion: {}, text: "Restart Game")
                 }
             }.frame(maxWidth: 200, maxHeight: 120)
         }
