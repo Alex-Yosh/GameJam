@@ -58,6 +58,7 @@ final class TimerManager: ObservableObject{
     
     func endTimer() {
         GameManager.shared.overlay = nil
+        GameManager.shared.startedLevel = false
         
     }
     

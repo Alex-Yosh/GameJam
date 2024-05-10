@@ -13,6 +13,7 @@ final class GameManager: ObservableObject{
     
     @Published var requiredTaps: Int = 0
     @Published var overlay: Constants.ScreenType?
+    @Published var startedLevel: Bool = false
     
         //-MARK: Notes for Shannon
         //these are the two objects you will need
@@ -61,6 +62,7 @@ final class GameManager: ObservableObject{
    
     func StartLevel() {
         requiredTaps = 3
+        startedLevel = true
         // flips over all cards and increase the value
         for i in 0...Constants.numOfTilesInColumn-1{
             for j in 0...Constants.numOfTilesInRow-1{
