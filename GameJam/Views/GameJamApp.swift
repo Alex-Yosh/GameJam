@@ -15,6 +15,7 @@ struct GameJamApp: App {
             HomeView()
                 .environmentObject(DatabaseManager.shared)
                 .environmentObject(GameManager.shared)
+                .environmentObject(TimerManager.shared)
         }
     }
 }

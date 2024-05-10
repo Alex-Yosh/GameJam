@@ -9,9 +9,12 @@ import SwiftUI
 
 struct ClicksLeftTextView: View {
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var dbManager: DatabaseManager
+    @EnvironmentObject var timerManager: TimerManager
+    
     var body: some View {
         if (gameManager.requiredTaps == 0){
-            GameButton(completion: {}, text: "I'm Done Fishing").frame(width: 200, height: 80)
+            GameButton(completion: {timerManager.startTimer()}, text: "I'm Done Fishing").frame(width: 200, height: 80)
         }else{
             HStack{
                 Text("Fish at least")

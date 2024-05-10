@@ -13,7 +13,7 @@ final class DatabaseManager: ObservableObject{
     static let shared = DatabaseManager() //singleton
     
     //Databases
-    @Published var user: User = User(currScore: 0, day: 0, highScore: 0)
+    @Published var user: User = User(currScore: 0, day: 0, startDate: Date.now, highScore: 0)
     @Published var map: [[Tile]] = []
     
     //containers
@@ -57,6 +57,7 @@ final class DatabaseManager: ObservableObject{
         let newUser = UserEntity(context: userContainer.viewContext)
         newUser.currScore = Int32(user.currScore)
         newUser.day = Int32(user.day)
+        newUser.startDate = user.startDate
         newUser.highScore = Int32(user.highScore)
         
         saveUserData()
@@ -94,6 +95,7 @@ final class DatabaseManager: ObservableObject{
         let newUser = UserEntity(context: userContainer.viewContext)
         newUser.currScore = 0
         newUser.day = 1
+        newUser.startDate = Date.now
         newUser.highScore = 0
         saveUserData()
     }
@@ -147,7 +149,7 @@ final class DatabaseManager: ObservableObject{
             let tempUser: [UserEntity] = try userContainer.viewContext.fetch(request)
             if (!tempUser.isEmpty){
                 //only one user
-                user = User(currScore: tempUser[0].currScore, day: tempUser[0].day, highScore: tempUser[0].highScore)
+                user = User(currScore: tempUser[0].currScore, day: tempUser[0].day, startDate: tempUser[0].startDate!, highScore: tempUser[0].highScore)
             }else{
                 initalizeUser()
             }
