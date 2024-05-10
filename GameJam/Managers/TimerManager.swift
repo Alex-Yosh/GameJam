@@ -45,7 +45,6 @@ final class TimerManager: ObservableObject{
         let calendar = Calendar(identifier: .gregorian)
         let timeValue = calendar.dateComponents([.hour, .minute, .second], from: Date.now, to: endDate)
         
-        print(hasCountdownCompleted)
         if !hasCountdownCompleted,
            let hour = timeValue.hour,
            let minute = timeValue.minute,
@@ -60,7 +59,7 @@ final class TimerManager: ObservableObject{
         GameManager.shared.overlay = nil
         if (GameManager.shared.startedLevel){
             GameManager.shared.startedLevel = false
-            GameManager.shared.StartLevel()
+            GameManager.shared.StartLevel(skipAddDay: false)
         }
         
         

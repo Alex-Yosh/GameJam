@@ -15,5 +15,6 @@ struct Constants{
         case restart
         case coolDown
         case seeNext
+        case basic
     }
 }

@@ -14,7 +14,7 @@ struct ClicksLeftTextView: View {
     
     var body: some View {
         if (gameManager.requiredTaps == 0){
-            GameButton(completion: {timerManager.startTimer()}, text: "I'm Done Fishing").frame(width: 200, height: 80)
+            GameButton(completion: {gameManager.doneFishing()}, text: "I'm Done Fishing").frame(width: 200, height: 80)
         }else{
             HStack{
                 Text("Fish at least")

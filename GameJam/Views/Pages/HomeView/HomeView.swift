@@ -16,7 +16,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack(){
-            GameView()
+            GameView().allowsHitTesting(gameManager.overlay == nil)
             if let overlay = gameManager.overlay{
                 switch(overlay){
                 case .coolDown:
@@ -25,6 +25,8 @@ struct HomeView: View {
                     RestartOverlayView()
                 case .seeNext:
                     SeeNextOverlayView()
+                case .basic:
+                    EmptyView()
                 }
             }
         }.onAppear(perform: {
@@ -34,7 +36,7 @@ struct HomeView: View {
             else{
                 gameManager.overlay = nil
                 if (!gameManager.startedLevel){
-                    gameManager.StartLevel()
+                    gameManager.StartLevel(skipAddDay: false)
                 }
             }
         })
