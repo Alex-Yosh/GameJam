@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TileView: View {
     @EnvironmentObject var dbManager : DatabaseManager
+    @EnvironmentObject var gameManager: GameManager
+    
     var col: Int
     var row: Int
     var tile: Tile
@@ -16,7 +18,7 @@ struct TileView: View {
     
     var body: some View {
         Button(action:{
-            dbManager.map[col][row].isPressed = true
+            gameManager.FlipTile(row: row, col: col)
         }){
             ZStack{
                 Rectangle()

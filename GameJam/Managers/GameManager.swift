@@ -25,27 +25,28 @@ final class GameManager: ObservableObject{
         
         //syntax is very basic but I will leave this here. ask me for help otherwise
         //https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics/
-//    func FlipTile(tile: Tile) {
-//       if (!tile.isPressed)
-//       {
-//           tile.isPressed = true
-//           updateScore()
-//           DatabaseManager.shared.saveMap()
-//       }
-//    }
+    func FlipTile(row: Int, col: Int) {
+        DatabaseManager.shared.map[col][row].isPressed = true
+        if (DatabaseManager.shared.map[col][row].value != 0){
+            //fish
+            updateScore(score: DatabaseManager.shared.map[col][row].value)
+        }else{
+            //bomb
+        }
+        DatabaseManager.shared.saveMap()
+       
+    }
     
 //    // add to currScore
-//    func updateScore(score: Int32)
-//    {
-//        DatabaseManager.shared.user.currScore += score
-//        if (DatabaseManager.shared.user.currScore > DatabaseManager.shared.user.highScore) {
-//        {
-//            DatabaseManager.shared.user.highScore = DatabaseManager.shared.user.currScore
-//            DatabaseManager.shared.saveUser()
-//            
-//        }
-//       
-//    }
+    func updateScore(score: Int32)
+    {
+        DatabaseManager.shared.user.currScore += score
+        if (DatabaseManager.shared.user.currScore > DatabaseManager.shared.user.highScore){
+            DatabaseManager.shared.user.highScore = DatabaseManager.shared.user.currScore
+        }
+        
+        DatabaseManager.shared.saveUser()
+    }
 //    
 //  
 //    
