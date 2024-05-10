@@ -20,7 +20,7 @@ struct ClicksLeftTextView: View {
                 Text("Fish at least")
                 Text("\(gameManager.requiredTaps)").bold()
                 Text("more tiles today")
-            }
+            }.frame(height: 80)
         }
     }
 }

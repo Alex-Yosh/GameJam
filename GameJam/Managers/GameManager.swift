@@ -70,6 +70,7 @@ final class GameManager: ObservableObject{
                 DatabaseManager.shared.map[i][j].isPressed = false
             }
         }
+        DatabaseManager.shared.saveMap()
     }
     
     // show map of the next day
