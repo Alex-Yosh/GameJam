@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct CoolDownOverlayView: View {
+    
+    @EnvironmentObject var timerManager: TimerManager
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         ZStack{
             Color.black
@@ -18,12 +23,23 @@ struct CoolDownOverlayView: View {
                 Rectangle()
                     .foregroundColor(.white)
                     .cornerRadius(10)
+                VStack{
+                    Text("\(timerManager.hour) : \(timerManager.minute) : \(timerManager.second)")
                     Text("See you tomorrow!")
+                }
             }.frame(maxWidth: 200, maxHeight: 120)
+        }.onReceive(timer) { _ in
+            if timerManager.hasCountdownCompleted {
+                timer.upstream.connect().cancel() // turn off timer
+                timerManager.endTimer()
+            } else {
+                timerManager.updateTimer()
+            }
         }
     }
 }
 
 #Preview {
     CoolDownOverlayView()
+        .environmentObject(TimerManager.shared)
 }
