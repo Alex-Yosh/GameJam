@@ -16,20 +16,6 @@ final class GameManager: ObservableObject{
     var bombPlacementsRow: [Int] = []
     var bombPlacementsCol: [Int] = []
     
-        //-MARK: Notes for Shannon
-        //these are the two objects you will need
-//        DatabaseManager.shared.map
-//        DatabaseManager.shared.user
-        
-        //if you change them, you have to save them to the DB using these fucntions
-//        DatabaseManager.shared.saveMap()
-//        DatabaseManager.shared.saveUser()
-        
-        //syntax is very basic but I will leave this here. ask me for help otherwise
-        //https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics/
-  
-    
-    
     func FlipTile(row: Int, col: Int) {
         DatabaseManager.shared.map[col][row].isPressed = true
         if (DatabaseManager.shared.map[col][row].value != 0){
