@@ -13,7 +13,7 @@ final class DatabaseManager: ObservableObject{
     static let shared = DatabaseManager() //singleton
     
     //Databases
-    @Published var user: User?
+    @Published var user: User = User(currScore: 0, day: 0, highScore: 0)
     @Published var map: [[Tile]] = []
     
     //containers
@@ -24,7 +24,7 @@ final class DatabaseManager: ObservableObject{
         //initalize containers
         userContainer = NSPersistentContainer(name: "UserContainer")
         mapContainer = NSPersistentContainer(name: "MapContainer")
-
+        
         loadContainers()
     }
     
@@ -43,8 +43,19 @@ final class DatabaseManager: ObservableObject{
             }
             
         }
-
+        
         saveMapData()
+    }
+    
+    func saveUser() {
+        deleteUserData()
+        
+        let newUser = UserEntity(context: userContainer.viewContext)
+        newUser.currScore = Int32(user.currScore)
+        newUser.day = Int32(user.day)
+        newUser.highScore = Int32(user.highScore)
+        
+        saveUserData()
     }
     
     //-MARK: private helpers
@@ -53,7 +64,17 @@ final class DatabaseManager: ObservableObject{
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "TileEntity")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do{
-           try mapContainer.viewContext.execute(deleteRequest)
+            try mapContainer.viewContext.execute(deleteRequest)
+        } catch let error{
+            print("Error deleting. \(error)")
+        }
+    }
+    
+    func deleteUserData() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "UserEntity")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do{
+            try userContainer.viewContext.execute(deleteRequest)
         } catch let error{
             print("Error deleting. \(error)")
         }
@@ -62,7 +83,7 @@ final class DatabaseManager: ObservableObject{
     private func loadContainers(){
         userContainer.loadPersistentStores(completionHandler: {_,_ in self.fetchUser()})
         mapContainer.loadPersistentStores(completionHandler: {_,_ in self.fetchMap()})
-
+        
     }
     
     private func initalizeUser() {
