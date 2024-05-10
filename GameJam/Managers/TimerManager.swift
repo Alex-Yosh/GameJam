@@ -26,8 +26,15 @@ final class TimerManager: ObservableObject{
 //        endDate = endDate.startOfNextDay
         
         //for testing
-        endDate = Date.now.addingTimeInterval(5)
+        if (DatabaseManager.shared.user.endDate > Date.now){
+            endDate = DatabaseManager.shared.user.endDate
+        }else{
+            endDate = Date.now.addingTimeInterval(200)
+        }
         
+        //store endtime
+        DatabaseManager.shared.user.endDate = endDate
+        DatabaseManager.shared.saveUser()
         
         GameManager.shared.overlay = .coolDown
         
