@@ -11,12 +11,19 @@ struct GridView: View {
     @EnvironmentObject var dbManager : DatabaseManager
     
     var body: some View {
-            
         Grid {
             ForEach(Array(dbManager.map.enumerated()), id: \.offset) { i, row in
                 GridRow {
                     ForEach(Array(row.enumerated()), id: \.offset) { j, tile in
-                        Text(String(tile.value))
+                        Button(action:{
+                            dbManager.map[i][j].isPressed = true
+                        }){
+                            ZStack{
+                                tile.isPressed ? Color.red : Color.white
+    //                            tile.isPressed ? Image(tile.imageFront) : Image(tile.imageBack)
+                                Text(String(tile.value))
+                            }.frame(width: 64, height: 64)
+                        }.disabled(tile.isPressed)
                     }
                 }
             }

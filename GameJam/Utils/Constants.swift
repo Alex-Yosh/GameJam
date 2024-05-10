@@ -8,6 +8,6 @@
 import Foundation
 
 struct Constants{
-    static let numOfTilesInRow = 8
-    static let numOfTilesInColumn = 8
+    static let numOfTilesInRow = 6
+    static let numOfTilesInColumn = 6
 }

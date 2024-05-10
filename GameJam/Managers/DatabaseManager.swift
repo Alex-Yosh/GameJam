@@ -13,12 +13,12 @@ final class DatabaseManager: ObservableObject{
     static let shared = DatabaseManager() //singleton
     
     //Databases
-    @Published var user: UserEntity?
-    @Published var map: [[TileEntity]] = []
+    @Published var user: User?
+    @Published var map: [[Tile]] = []
     
     //containers
-    let userContainer: NSPersistentContainer
-    let mapContainer: NSPersistentContainer
+    private let userContainer: NSPersistentContainer
+    private let mapContainer: NSPersistentContainer
     
     init() {
         //initalize containers
@@ -28,7 +28,36 @@ final class DatabaseManager: ObservableObject{
         loadContainers()
     }
     
+    
+    func saveMap() {
+        deleteMapData()
+        for i in 0...Constants.numOfTilesInColumn-1{
+            for j in 0...Constants.numOfTilesInRow-1{
+                let newTile = TileEntity(context: mapContainer.viewContext)
+                newTile.row = Int32(j)
+                newTile.col = Int32(i)
+                newTile.value = map[i][j].value
+                newTile.imageBack = map[i][j].imageBack
+                newTile.imageFront = map[i][j].imageFront
+                newTile.isPressed = map[i][j].isPressed
+            }
+            
+        }
+
+        saveMapData()
+    }
+    
     //-MARK: private helpers
+    
+    func deleteMapData() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "TileEntity")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do{
+           try mapContainer.viewContext.execute(deleteRequest)
+        } catch let error{
+            print("Error deleting. \(error)")
+        }
+    }
     
     private func loadContainers(){
         userContainer.loadPersistentStores(completionHandler: {_,_ in self.fetchUser()})
@@ -45,11 +74,14 @@ final class DatabaseManager: ObservableObject{
     }
     
     private func initalizeMap() {
-        for _ in 1...Constants.numOfTilesInColumn{
-            for _ in 1...Constants.numOfTilesInRow{
+        for i in 0...Constants.numOfTilesInColumn-1{
+            for j in 0...Constants.numOfTilesInRow-1{
                 let newTile = TileEntity(context: mapContainer.viewContext)
                 newTile.value = 0
-                newTile.image = ""
+                newTile.imageBack = ""
+                newTile.imageFront = ""
+                newTile.row = Int32(j)
+                newTile.col = Int32(i)
                 newTile.isPressed = false
             }
         }
@@ -62,13 +94,14 @@ final class DatabaseManager: ObservableObject{
         
         do {
             let recievedMap: [TileEntity] = try mapContainer.viewContext.fetch(request)
-            var tempRow: [TileEntity] = []
+            var tempRow: [Tile] = []
             var indexIncr = 0
             if (!recievedMap.isEmpty){
                 map = []
-                for _ in 0...Constants.numOfTilesInColumn-1{
-                    for _ in 0...Constants.numOfTilesInRow-1{
-                        tempRow.append(recievedMap[indexIncr])
+                for i in 0...Constants.numOfTilesInColumn-1{
+                    for j in 0...Constants.numOfTilesInRow-1{
+                        let wantedIdentity = recievedMap.first(where: {$0.row == Int(j) && $0.col == Int(i)})
+                        tempRow.append(Tile(imageFront: wantedIdentity?.imageFront ?? "", imageBack: wantedIdentity?.imageBack ?? "", isPressed: wantedIdentity?.isPressed ?? false, value: wantedIdentity?.value ?? Int32(0)))
                         indexIncr+=1
                     }
                     map.append(tempRow)
@@ -89,7 +122,7 @@ final class DatabaseManager: ObservableObject{
             let tempUser: [UserEntity] = try userContainer.viewContext.fetch(request)
             if (!tempUser.isEmpty){
                 //only one user
-                user = tempUser[0]
+                user = User(currScore: tempUser[0].currScore, day: tempUser[0].day, highScore: tempUser[0].highScore)
             }else{
                 initalizeUser()
             }

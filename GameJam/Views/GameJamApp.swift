@@ -14,6 +14,7 @@ struct GameJamApp: App {
         WindowGroup {
             HomeView()
                 .environmentObject(DatabaseManager.shared)
+                .environmentObject(GameManager.shared)
         }
     }
 }

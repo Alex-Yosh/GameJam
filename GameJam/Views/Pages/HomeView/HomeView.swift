@@ -9,12 +9,17 @@ import SwiftUI
 import CoreData
 
 struct HomeView: View {
-    @EnvironmentObject var dbmanager : DatabaseManager
+    @EnvironmentObject var gameManager : GameManager
 
     
     var body: some View {
         VStack{
             GridView()
+            Button(action:{
+                gameManager.onTap()
+            }){
+                Text("click")
+            }
         }
     }
 }
