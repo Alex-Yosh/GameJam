@@ -11,6 +11,7 @@ import Foundation
 final class GameManager: ObservableObject{
     static let shared = GameManager() //singleton
     
+    @Published var requiredTaps: Int = 0
     @Published var overlay: Constants.ScreenType?
     
         //-MARK: Notes for Shannon
