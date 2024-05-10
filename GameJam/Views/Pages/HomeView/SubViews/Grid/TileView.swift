@@ -21,14 +21,15 @@ struct TileView: View {
             gameManager.FlipTile(row: row, col: col)
         }){
             ZStack{
-                Rectangle()
-                    .foregroundColor(tile.isPressed ? Constants.Colours.redTile : Constants.Colours.greenTile)
-                    .cornerRadius(10)
-                    .rotation3DEffect(
-                        .degrees(tile.isPressed ? 180: 0), axis: /*@START_MENU_TOKEN@*/(x: 0.0, y: 1.0, z: 0.0)/*@END_MENU_TOKEN@*/
-                    )
-//                            tile.isPressed ? Image(tile.imageFront) : Image(tile.imageBack)
-                Text(String(tile.value))
+                tile.isPressed ?
+                Image(tile.imageFront).resizable().aspectRatio(contentMode:.fit).rotation3DEffect(
+                    .degrees(tile.isPressed ? 180: 0), axis: /*@START_MENU_TOKEN@*/(x: 0.0, y: 1.0, z: 0.0)/*@END_MENU_TOKEN@*/
+                )
+                : Image(tile.imageBack).resizable().aspectRatio(contentMode: .fit).rotation3DEffect(
+                    .degrees(tile.isPressed ? 180: 0), axis: /*@START_MENU_TOKEN@*/(x: 0.0, y: 1.0, z: 0.0)/*@END_MENU_TOKEN@*/
+                )
+                
+                    
             }.frame(width: 48, height: 48)
         }.disabled(tile.isPressed)
     }

@@ -16,15 +16,14 @@ struct ScoresTextView: View {
             Text("Score: \(dbManager.user.currScore)")
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Constants.Colours.grayScore
-                    .cornerRadius(12))
+                .foregroundColor(Constants.Colours.subText)
             
             Spacer()
             Text("Best: \(dbManager.user.highScore)")
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Constants.Colours.grayScore
-                    .cornerRadius(12))
+                .foregroundColor(Constants.Colours.subText)
+                
         }
     }
 }
