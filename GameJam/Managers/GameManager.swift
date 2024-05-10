@@ -11,6 +11,8 @@ import Foundation
 final class GameManager: ObservableObject{
     static let shared = GameManager() //singleton
     
+    @Published var overlay: Constants.ScreenType?
+    
         //-MARK: Notes for Shannon
         //these are the two objects you will need
 //        DatabaseManager.shared.map

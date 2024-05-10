@@ -10,15 +10,22 @@ import CoreData
 
 struct HomeView: View {
     @EnvironmentObject var gameManager : GameManager
+    @EnvironmentObject var dbManager : DatabaseManager
 
     
     var body: some View {
-        VStack{
-            GridView()
-            Button(action:{
-                gameManager.onTap()
-            }){
-                Text("click")
+        ZStack(){
+            GameView()
+            GameOverOverlayView()
+            if let overlay = gameManager.overlay{
+                switch(overlay){
+                case .gameOver:
+                    GameOverOverlayView()
+                case .restart:
+                    RestartOverlayView()
+                case .seeNext:
+                    SeeNextOverlayView()
+                }
             }
         }
     }
@@ -28,4 +35,6 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environmentObject(GameManager.shared)
+        .environmentObject(DatabaseManager.shared)
 }
