@@ -12,9 +12,19 @@ struct ScoresTextView: View {
 
     var body: some View {
         HStack{
-            Text("Current Score: \(dbManager.user.currScore)")
+                
+            Text("Score: \(dbManager.user.currScore)")
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Constants.Colours.grayScore
+                    .cornerRadius(12))
+            
             Spacer()
-            Text("High Score: \(dbManager.user.highScore)")
+            Text("Best: \(dbManager.user.highScore)")
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Constants.Colours.grayScore
+                    .cornerRadius(12))
         }
     }
 }

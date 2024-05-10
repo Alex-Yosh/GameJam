@@ -13,9 +13,9 @@ struct GameView: View {
     var body: some View {
         VStack{
             DayTextView()
+            ScoresTextView().padding(.all, 32)
             GridView()
             ClicksLeftTextView()
-            ScoresTextView()
         }
     }
 }

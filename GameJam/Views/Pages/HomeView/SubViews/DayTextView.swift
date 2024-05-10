@@ -10,10 +10,14 @@ import SwiftUI
 struct DayTextView: View {
     @EnvironmentObject var dbManager : DatabaseManager
     var body: some View {
-        Text("Day " + String(dbManager.user.day))
+        VStack{
+            Text("Day " + String(dbManager.user.day)).bold().padding()
+            Text("Find fish, avoid bombs")
+        }
     }
 }
 
 #Preview {
     DayTextView()
+        .environmentObject(DatabaseManager.shared)
 }

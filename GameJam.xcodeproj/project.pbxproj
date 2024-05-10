@@ -20,7 +20,7 @@
 		FAC08D6E2BEE534D002D7EE4 /* ClicksLeftTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D6D2BEE534D002D7EE4 /* ClicksLeftTextView.swift */; };
 		FAC08D702BEE53AC002D7EE4 /* ScoresTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D6F2BEE53AC002D7EE4 /* ScoresTextView.swift */; };
 		FAC08D722BEE560F002D7EE4 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D712BEE560F002D7EE4 /* GameView.swift */; };
-		FAC08D752BEE5712002D7EE4 /* GameOverOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D742BEE5712002D7EE4 /* GameOverOverlayView.swift */; };
+		FAC08D752BEE5712002D7EE4 /* CoolDownOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D742BEE5712002D7EE4 /* CoolDownOverlayView.swift */; };
 		FAC08D772BEE5730002D7EE4 /* RestartOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D762BEE5730002D7EE4 /* RestartOverlayView.swift */; };
 		FAC08D792BEE573C002D7EE4 /* SeeNextOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D782BEE573C002D7EE4 /* SeeNextOverlayView.swift */; };
 		FAC08D7B2BEE589A002D7EE4 /* ColourConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08D7A2BEE589A002D7EE4 /* ColourConstants.swift */; };
@@ -45,7 +45,7 @@
 		FAC08D6D2BEE534D002D7EE4 /* ClicksLeftTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClicksLeftTextView.swift; sourceTree = "<group>"; };
 		FAC08D6F2BEE53AC002D7EE4 /* ScoresTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTextView.swift; sourceTree = "<group>"; };
 		FAC08D712BEE560F002D7EE4 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		FAC08D742BEE5712002D7EE4 /* GameOverOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverOverlayView.swift; sourceTree = "<group>"; };
+		FAC08D742BEE5712002D7EE4 /* CoolDownOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolDownOverlayView.swift; sourceTree = "<group>"; };
 		FAC08D762BEE5730002D7EE4 /* RestartOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartOverlayView.swift; sourceTree = "<group>"; };
 		FAC08D782BEE573C002D7EE4 /* SeeNextOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeNextOverlayView.swift; sourceTree = "<group>"; };
 		FAC08D7A2BEE589A002D7EE4 /* ColourConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourConstants.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		FAC08D732BEE56FA002D7EE4 /* Overlays */ = {
 			isa = PBXGroup;
 			children = (
-				FAC08D742BEE5712002D7EE4 /* GameOverOverlayView.swift */,
+				FAC08D742BEE5712002D7EE4 /* CoolDownOverlayView.swift */,
 				FAC08D762BEE5730002D7EE4 /* RestartOverlayView.swift */,
 				FAC08D782BEE573C002D7EE4 /* SeeNextOverlayView.swift */,
 			);
@@ -279,7 +279,7 @@
 				FAC08D722BEE560F002D7EE4 /* GameView.swift in Sources */,
 				FAC08D642BEDB4B8002D7EE4 /* GameManager.swift in Sources */,
 				FAC08D6E2BEE534D002D7EE4 /* ClicksLeftTextView.swift in Sources */,
-				FAC08D752BEE5712002D7EE4 /* GameOverOverlayView.swift in Sources */,
+				FAC08D752BEE5712002D7EE4 /* CoolDownOverlayView.swift in Sources */,
 				FAC08D792BEE573C002D7EE4 /* SeeNextOverlayView.swift in Sources */,
 				FAF00FFA2BE43C33009674E8 /* HomeView.swift in Sources */,
 				FAF00FF82BE43C33009674E8 /* GameJamApp.swift in Sources */,

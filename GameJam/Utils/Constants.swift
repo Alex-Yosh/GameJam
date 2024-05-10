@@ -13,7 +13,7 @@ struct Constants{
     
     enum ScreenType: String{
         case restart
-        case gameOver
+        case coolDown
         case seeNext
     }
 }

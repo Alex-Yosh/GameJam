@@ -16,11 +16,10 @@ struct HomeView: View {
     var body: some View {
         ZStack(){
             GameView()
-            GameOverOverlayView()
             if let overlay = gameManager.overlay{
                 switch(overlay){
-                case .gameOver:
-                    GameOverOverlayView()
+                case .coolDown:
+                    CoolDownOverlayView()
                 case .restart:
                     RestartOverlayView()
                 case .seeNext:

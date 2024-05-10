@@ -1,5 +1,5 @@
 //
-//  RestartOverlayView.swift
+//  GameOverOverlayView.swift
 //  GameJam
 //
 //  Created by Alex Yoshida on 2024-05-10.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RestartOverlayView: View {
+struct CoolDownOverlayView: View {
     var body: some View {
         ZStack{
             Color.black
@@ -18,17 +18,12 @@ struct RestartOverlayView: View {
                 Rectangle()
                     .foregroundColor(.white)
                     .cornerRadius(10)
-                VStack{
-                    Text("Oh no, you died :(")
-                        .foregroundStyle(.red)
-                        .padding(.top)
-                    GameButton(completion: {}, text: "Restart")
-                }
+                    Text("See you tomorrow!")
             }.frame(maxWidth: 200, maxHeight: 120)
         }
     }
 }
 
 #Preview {
-    RestartOverlayView()
+    CoolDownOverlayView()
 }

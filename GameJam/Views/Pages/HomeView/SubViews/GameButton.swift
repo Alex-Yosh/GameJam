@@ -22,6 +22,7 @@ struct GameButton: View {
                         .cornerRadius(15)
                         .padding()
                     Text(text)
+                        .foregroundColor(.white)
                 }
             }
         }
