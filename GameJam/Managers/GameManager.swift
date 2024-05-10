@@ -4,7 +4,6 @@
 //
 //  Created by Alex Yoshida on 2024-05-09.
 //
-
 import Foundation
 
 
@@ -28,11 +27,15 @@ final class GameManager: ObservableObject{
         
         //syntax is very basic but I will leave this here. ask me for help otherwise
         //https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics/
+  
+    
+    
     func FlipTile(row: Int, col: Int) {
         DatabaseManager.shared.map[col][row].isPressed = true
         if (DatabaseManager.shared.map[col][row].value != 0){
             //fish
             updateScore(score: DatabaseManager.shared.map[col][row].value)
+            SoundManager.shared.playFishSound()
             if (requiredTaps > 0)
             {
                 requiredTaps-=1
@@ -42,6 +45,7 @@ final class GameManager: ObservableObject{
         else{
             //bomb
             overlay = .basic
+            SoundManager.shared.playBombSound()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.overlay = .restart
             }
