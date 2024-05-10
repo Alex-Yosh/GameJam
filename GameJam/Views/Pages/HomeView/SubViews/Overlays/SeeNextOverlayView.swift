@@ -17,12 +17,14 @@ struct SeeNextOverlayView: View {
                 .opacity(0.7)
             ZStack{
                 Rectangle()
-                    .foregroundColor(.white)
+                    .foregroundColor(Constants.Colours.background)
                     .cornerRadius(10)
                 VStack{
                     Text("Day \(dbManager.user.day) completed!")
                         .padding(.top)
+                        .foregroundColor(Constants.Colours.plainText)
                     Text("Show tomorrow's bombs?")
+                        .foregroundColor(Constants.Colours.plainText)
                     GameButton(completion: {}, text: "Show Bombs")
                 }
             }.frame(maxWidth: 250, maxHeight: 150)

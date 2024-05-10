@@ -21,11 +21,13 @@ struct CoolDownOverlayView: View {
                 .opacity(0.7)
             ZStack{
                 Rectangle()
-                    .foregroundColor(.white)
+                    .foregroundColor(Constants.Colours.background)
                     .cornerRadius(10)
                 VStack{
                     Text("\(timerManager.hour) : \(timerManager.minute) : \(timerManager.second)")
+                        .foregroundColor(Constants.Colours.accent)
                     Text("See you tomorrow!")
+                        .foregroundColor(Constants.Colours.plainText)
                 }
             }.frame(maxWidth: 200, maxHeight: 120)
         }.onReceive(timer) { _ in
