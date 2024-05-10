@@ -20,6 +20,10 @@ struct GridView: View {
                 }
             }
         }
+        .padding(25)
+        .background(Constants.Colours.pond)
+        .cornerRadius(50)
+        
     }
 }
 

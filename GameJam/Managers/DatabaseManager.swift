@@ -105,8 +105,8 @@ final class DatabaseManager: ObservableObject{
             for j in 0...Constants.numOfTilesInRow-1{
                 let newTile = TileEntity(context: mapContainer.viewContext)
                 newTile.value = 1
-                newTile.imageBack = ""
-                newTile.imageFront = ""
+                newTile.imageBack = "lily"
+                newTile.imageFront = "fish"
                 newTile.row = Int32(j)
                 newTile.col = Int32(i)
                 newTile.isPressed = false

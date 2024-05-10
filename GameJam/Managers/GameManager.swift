@@ -100,6 +100,7 @@ final class GameManager: ObservableObject{
             let randomCol = Int.random(in: 0..<6)
             if (DatabaseManager.shared.map[randomRow][randomCol].value > 0) {
                 DatabaseManager.shared.map[randomRow][randomCol].value = 0
+                DatabaseManager.shared.map[randomRow][randomCol].imageFront = "bomb"
                 numBombs += 1
             }
         }
