@@ -29,7 +29,7 @@ final class TimerManager: ObservableObject{
         if (DatabaseManager.shared.user.endDate > Date.now){
             endDate = DatabaseManager.shared.user.endDate
         }else{
-            endDate = Date.now.addingTimeInterval(200)
+            endDate = Date.now.addingTimeInterval(10)
         }
         
         //store endtime
@@ -58,6 +58,11 @@ final class TimerManager: ObservableObject{
     
     func endTimer() {
         GameManager.shared.overlay = nil
+        if (GameManager.shared.startedLevel){
+            GameManager.shared.startedLevel = false
+            GameManager.shared.StartLevel()
+        }
+        
         
     }
     

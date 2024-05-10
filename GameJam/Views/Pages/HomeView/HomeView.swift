@@ -33,6 +33,9 @@ struct HomeView: View {
             }
             else{
                 gameManager.overlay = nil
+                if (!gameManager.startedLevel){
+                    gameManager.StartLevel()
+                }
             }
         })
     }
