@@ -30,7 +30,17 @@ final class GameManager: ObservableObject{
         if (DatabaseManager.shared.map[col][row].value != 0){
             //fish
             updateScore(score: DatabaseManager.shared.map[col][row].value)
-        }else{
+            if (requiredTaps > 0)
+            {
+                requiredTaps-=1
+                if (requiredTaps == 0)
+                {
+                    // TODO: reveal finish button
+                }
+            }
+            
+        }
+        else{
             //bomb
             //TODO: display popup you lose and transition to RestartGame()
             RestartGame()
@@ -50,6 +60,7 @@ final class GameManager: ObservableObject{
     }
    
     func StartLevel() {
+        requiredTaps = 3
         // flips over all cards and increase the value
         for i in 0...Constants.numOfTilesInColumn-1{
             for j in 0...Constants.numOfTilesInRow-1{
