@@ -27,9 +27,9 @@ final class TimerManager: ObservableObject{
         if (DatabaseManager.shared.user.endDate > Date.now){
             endDate = DatabaseManager.shared.user.endDate
         }else{
+            endDate = endDate.startOfNextDay
             //for testing
-            //        endDate = endDate.startOfNextDay
-            endDate = Date.now.addingTimeInterval(10)
+//            endDate = Date.now.addingTimeInterval(10)
         }
         
         //store endtime

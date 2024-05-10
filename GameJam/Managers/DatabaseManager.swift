@@ -149,7 +149,7 @@ final class DatabaseManager: ObservableObject{
             let tempUser: [UserEntity] = try userContainer.viewContext.fetch(request)
             if (!tempUser.isEmpty){
                 //only one user
-                user = User(currScore: tempUser[0].currScore, day: tempUser[0].day, endDate: tempUser[0].endDate!, highScore: tempUser[0].highScore)
+                user = User(currScore: tempUser[0].currScore, day: tempUser[0].day, endDate: tempUser[0].endDate ?? Date.now, highScore: tempUser[0].highScore)
             }else{
                 initalizeUser()
             }
