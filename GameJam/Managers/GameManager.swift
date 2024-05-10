@@ -32,12 +32,13 @@ final class GameManager: ObservableObject{
             updateScore(score: DatabaseManager.shared.map[col][row].value)
         }else{
             //bomb
+            //TODO: display popup you lose and transition to RestartGame()
+            RestartGame()
         }
         DatabaseManager.shared.saveMap()
-       
     }
     
-//    // add to currScore
+    // add to currScore
     func updateScore(score: Int32)
     {
         DatabaseManager.shared.user.currScore += score
@@ -47,42 +48,58 @@ final class GameManager: ObservableObject{
         
         DatabaseManager.shared.saveUser()
     }
-//    
-//  
-//    
-//    func StartLevel() {
-//        // flips over all cards
-//        DatabaseManager.shared.map.forEach((tile) => tile.isPressed = false));
-//        DatabaseManager.shared.saveMap();
-//        
-//    }
-//    
-//    // show map of the next day
-//    func WinLevel() {
-//        if (DatabaseManager.shared.user.day < 7) {
-//            DatabaseManager.shared.user.day += 1
-//        }
-//        else {
-//            RestartGame();
-//        }
-//        
-//        // move on to next day (need to add bombs)
-//        DatabaseManager.shared.map.forEach()
-//        
-//        
-//        
-//        
-//    }
-//    
-//
+   
+    func StartLevel() {
+        // flips over all cards and increase the value
+        for i in 0...Constants.numOfTilesInColumn-1{
+            for j in 0...Constants.numOfTilesInRow-1{
+                DatabaseManager.shared.map[i][j].value *= 2
+                DatabaseManager.shared.map[i][j].isPressed = false
+            }
+        }
+    }
+    
+    // show map of the next day
+    func WinLevel() {
+        if (DatabaseManager.shared.user.day < 7) {
+           
+            DatabaseManager.shared.user.day += 1
+            AddBombs()
+            // TODO: reveal next days bombs for a period of time
+            StartLevel()
+        }
+        else {
+            // TODO: display you win popup
+            RestartGame();
+        }
+    }
+
+    // adds 4 new bombs
+    func AddBombs() {
+        var numBombs = 0
+        var totalBombs = 4
+        while (numBombs < totalBombs) {
+            let randomRow = Int.random(in: 0..<6)
+            let randomCol = Int.random(in: 0..<6)
+            if (DatabaseManager.shared.map[randomRow][randomCol].value > 0) {
+                DatabaseManager.shared.map[randomRow][randomCol].value = 0
+                numBombs += 1
+            }
+        }
+        DatabaseManager.shared.saveMap()
+    }
+    
     // call this when failing a level and reset back to day 1
     func RestartGame(){
         //reinitalize map
         DatabaseManager.shared.reInitalizeMap();
-        
+        AddBombs()
         // set up user
         DatabaseManager.shared.user.currScore = 0
         DatabaseManager.shared.user.day = 1
+        
+        //TODO: add transition/popup before calling startlevel
+        StartLevel()
         
     }
 }
